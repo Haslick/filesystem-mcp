@@ -4,7 +4,7 @@
 FileSystem MCP - Un asistente inteligente para operaciones del sistema de archivos
 utilizando el modelo Llama-3 con capacidades de function calling optimizadas.
 
-Este script implementa un sistema Model-Call-Process (MCP) que permite realizar
+Este script implementa un sistema Model-Context-Protocol (MCP) que permite realizar
 operaciones en el sistema de archivos a través de lenguaje natural, aprovechando
 las capacidades específicas de function calling del modelo Llama-3.
 
