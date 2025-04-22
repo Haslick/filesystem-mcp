@@ -1,3 +1,8 @@
+> ⚠️ **Nota importante**: Este proyecto no está pensado para uso en producción. Es un **ejercicio didáctico** que desarrollé con fines de aprendizaje, para experimentar con **modelos LLM locales** y explorar la tecnica de **Model‑Context‑Protocol (MCP)**.
+
+> Toda la implementación está contenida en un solo archivo Python autocontenido, para facilitar su lectura, comprensión y modificación por parte de quienes están aprendiendo sobre la integración de LLMs locales con MCP y herramientas personalizadas.
+
+
 # FileSystem MCP
 
 **FileSystem MCP** es un asistente inteligente de línea de comandos para gestionar operaciones del sistema de archivos mediante lenguaje natural, aprovechando el modelo **Meta Llama‑3 8B Instruct** con capacidades de _function calling_.
