@@ -4,7 +4,7 @@
 
 ## 📝 Descripción
 
-Este proyecto implementa un sistema **Model‑Call‑Process (MCP)** que permite:
+Este proyecto implementa un sistema **Model‑Context‑Protocol (MCP)** que permite:
 - Crear, copiar, mover, renombrar y eliminar archivos y directorios.
 - Listar contenidos de carpetas y obtener información detallada de archivos.
 - Interactuar de forma conversacional, sin tener que recordar comandos del sistema.
