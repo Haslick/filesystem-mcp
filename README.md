@@ -107,6 +107,8 @@ Durante la sesión, usa comandos precedidos por `/`:
 - **Mover varios archivos**:
   ```text
   Tú: Mueve img1.png e img2.png a la carpeta Imágenes
+  Detalles: Función: move_multiple_files, Argumentos: {"files": ["img1.png", "img2.png"], "destination": "Imágenes"}
+   ¿Confirmar esta operación? [y/n]: y
   Asistente: He movido img1.png y img2.png a 'Imágenes'.
   ```
 
