@@ -1,68 +1,136 @@
 # FileSystem MCP
 
-Un asistente inteligente para operaciones del sistema de archivos utilizando el modelo Llama-3 con capacidades de function calling optimizadas.
+**FileSystem MCP** es un asistente inteligente de línea de comandos para gestionar operaciones del sistema de archivos mediante lenguaje natural, aprovechando el modelo **Meta Llama‑3 8B Instruct** con capacidades de _function calling_.
 
-## Descripción
+## 📝 Descripción
 
-Este script implementa un sistema Model-Call-Process (MCP) que permite realizar operaciones en el sistema de archivos a través de lenguaje natural, aprovechando las capacidades específicas de function calling del modelo Llama-3.
+Este proyecto implementa un sistema **Model‑Call‑Process (MCP)** que permite:
+- Crear, copiar, mover, renombrar y eliminar archivos y directorios.
+- Listar contenidos de carpetas y obtener información detallada de archivos.
+- Interactuar de forma conversacional, sin tener que recordar comandos del sistema.
+- Ejecutar un modelo Llama‑3 **localmente**, sin depender de servicios en la nube.
 
-## Características
+## 🚀 Características destacadas
 
-- 💬 **Interfaz conversacional** - Interactúa con tus archivos usando lenguaje natural
-- 🔒 **Sistema de permisos** - Diferentes niveles de acceso para operaciones seguras
-- 📁 **Operaciones completas** - Crear, copiar, mover, renombrar y eliminar archivos/directorios
-- 🛡️ **Confirmaciones inteligentes** - Protección contra operaciones destructivas
-- 🎨 **Interfaz enriquecida** - Formato de texto mejorado con Rich
+- **Interfaz conversacional** en español.
+- **Sistema de permisos** configurable (READ_ONLY, BASIC, STANDARD, ADVANCED, ADMIN).
+- **Confirmaciones inteligentes** para evitar operaciones destructivas.
+- **UI enriquecida** con [Rich](https://github.com/Textualize/rich) para formatos de texto, tablas y progreso.
+- **Function calling** optimizado con Llama‑3 Instruct Q4_K_M (8B parámetros).
 
-## Instalación
+## 🖥️ Requisitos del sistema
 
-1. Descarga el script `filesystem_mcp.py`
-2. Asegúrate de tener Python 3.8+ instalado
-3. Las dependencias necesarias (llama-cpp-python y rich) se instalarán automáticamente la primera vez que ejecutes el script
-4. El modelo necesario se descargará automáticamente durante la primera ejecución (requiere aproximadamente 5GB de espacio)
+- **Hardware mínimo**: GPU con **8 GB de VRAM** (recomendado NVIDIA).
+- **CPU**: moderado (multinúcleo recomendado).
+- **RAM**: 16 GB o más.
+- **Espacio en disco**: ~5 GB para el modelo.
+- **Sistema operativo**: Windows, macOS o Linux.
+- **Python** 3.8 o superior.
 
-## Requisitos
+## 📦 Instalación
 
-- Python 3.8 o superior
-- Modelo Llama-3 (se descargará automáticamente si no está disponible)
-- Bibliotecas: llama-cpp-python, rich (instalación automática si faltan)
-- Espacio en disco: ~5GB para el modelo
+1. Clona o descarga este repositorio:
+   ```bash
+   git clone https://github.com/Haslick/filesystem-mcp.git
+   cd filesystem-mcp
+   ```
+2. Asegúrate de tener Python 3.8+ instalado.
+3. Ejecuta el script; instalará dependencias automáticamente la primera vez:
+   ```bash
+   python filesystem_mcp.py
+   ```
+   - Se instalarán `llama-cpp-python` y `rich` si faltan.
+   - Se descargará (o solicitará ruta) el modelo de ~5 GB.
 
-## Uso
+## ⚙️ Uso
 
-1. Ejecuta el script: `python filesystem_mcp.py`
-2. El programa te guiará para configurar el directorio base y descargar el modelo si es necesario
-3. Interactúa con el asistente usando lenguaje natural
+Al ejecutar el script, se te guiará para configurar:
+- Directorio base de operaciones.
+- Nivel de permisos.
+- Confirmaciones de seguridad.
 
-### Comandos especiales
+Después de la configuración inicial, ingresa tus peticiones en lenguaje natural:
+```text
+Tú: Mueve los archivos informe.pdf y datos.csv a la carpeta Backup
+```
+Y el asistente procesará la operación.
 
-- `/ayuda` - Muestra la lista de comandos disponibles
-- `/dir [ruta]` - Cambia el directorio base
-- `/permisos` - Gestiona los niveles de permiso
-- `/herramientas` - Lista las operaciones disponibles
-- `/salir` - Termina el programa
+### 🎛️ Argumentos de línea de comandos
 
-## Ejemplos de uso
+Puedes pasar opciones al invocar `filesystem_mcp.py`:
 
-### Organizar archivos
+| Argumento               | Descripción                                          |
+|-------------------------|------------------------------------------------------|
+| `--base-dir <ruta>`     | Directorio base donde se realizarán las operaciones |
+| `--model <ruta>`        | Ruta al archivo GGUF del modelo Llama‑3             |
+| `--permission-level`    | Nivel de permisos inicial (READ_ONLY, BASIC, …)      |
+| `--confirm-all`         | Forzar confirmación para **todas** las operaciones    |
 
-Tú: Mueve todos los archivos PDF a la carpeta Documentos
+Ejemplo:
+```bash
+python filesystem_mcp.py --base-dir ~/MisProyectos --permission-level ADMIN
+```
 
-[El sistema ejecuta la operación]
+### 🛠️ Comandos especiales
 
-Asistente: Se movieron 2 archivos a Documentos exitosamente.
+Durante la sesión, usa comandos precedidos por `/`:
 
+| Comando                 | Descripción                                 |
+|-------------------------|---------------------------------------------|
+| `/ayuda`                | Muestra la ayuda de comandos                |
+| `/dir [ruta]`           | Ver o cambiar el directorio base            |
+| `/permisos [NIVEL]`     | Consultar o cambiar nivel de permisos       |
+| `/herramientas`         | Lista las operaciones permitidas            |
+| `/estado`               | Muestra el estado actual (configuración)    |
+| `/limpiar`              | Limpia la pantalla                          |
+| `/salir`                | Finaliza la sesión                          |
 
-### Obtener información
+## 📚 Ejemplos de uso
 
-Tú: ¿Qué hay en la carpeta actual?
+- **Crear directorio**:
+  ```text
+  Tú: Crea una carpeta llamada Proyectos
+  Asistente: ¡Listo! He creado la carpeta 'Proyectos'.
+  ```
 
-[El sistema lista el contenido]
+- **Listar contenido**:
+  ```text
+  Tú: ¿Qué hay en la carpeta actual?
+  Asistente:
+    Archivos:
+    - informe.txt
+    - datos.csv
+    Carpetas:
+    - Proyectos
+  ```
 
-Asistente: El contenido de la carpeta actual es:
-  * Archivos: archivo1.txt, datos.csv
-  * Carpetas: Documentos, Imágenes
+- **Mover varios archivos**:
+  ```text
+  Tú: Mueve img1.png e img2.png a la carpeta Imágenes
+  Asistente: He movido img1.png y img2.png a 'Imágenes'.
+  ```
 
-## Autor
+## 💡 Ejecución local del modelo
 
-Desarrollado por Leonardo con ayuda de Claude Sonnet 3.7 thinking mode (Abril 2025)
+El modelo **Meta-Llama-3‑8B Instruct** se ejecuta **completamente en tu máquina** mediante `llama-cpp-python`. Esto garantiza:
+
+- **Privacidad total** de tus datos.
+- **Baja latencia** (no hay llamadas a la nube).
+- **Optimización Q4-K_M** que permite correrlo en **8 GB de VRAM**.
+
+> **Importante**: Ajusta `n_gpu_layers` en `CONFIG["MODEL_PARAMS"]` según tu GPU.
+
+## 🤝 Contribuciones
+
+¡Las contribuciones son bienvenidas! Para reportar errores o proponer mejoras:
+1. Abre un _issue_ en GitHub.
+2. Realiza un _fork_, crea una rama y envía un _pull request_.
+
+## 📄 Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+---
+
+Desarrollado por **Leonardo** con ayuda de Claude Sonnet 3.7 thinking mode (Abril 2025).
+
