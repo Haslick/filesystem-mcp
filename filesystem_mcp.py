@@ -8,6 +8,14 @@ Este script implementa un sistema Model-Context-Protocol (MCP) que permite reali
 operaciones en el sistema de archivos a través de lenguaje natural, aprovechando
 las capacidades específicas de function calling del modelo Llama-3.
 
+⚠️ Este proyecto no está pensado para uso en producción. Es un ejercicio didáctico
+que desarrollé con fines de aprendizaje y exploración del uso de LLMs locales 
+combinados con el patrón Model-Context-Protocol (MCP).
+
+Toda la lógica está contenida en un único archivo con el objetivo de que cualquier
+persona que esté empezando a experimentar con estos temas pueda seguir fácilmente 
+la dinámica completa de un asistente LLM autocontenido.
+
 Author: Leonardo - Mejorado con ayuda de Claude Sonnet 3.7 thinking mode
 Date: Abril 2025
 """
