@@ -797,7 +797,7 @@ AVAILABLE_FUNCTIONS = [
 
 class FileSystemMCP:
     """
-    Implementación avanzada del patrón Model-Call-Process para operaciones del sistema de archivos.
+    Implementación avanzada del sistema Model-Context-Protocol para operaciones del sistema de archivos.
     Utiliza un modelo Llama-3 con capacidades de function calling para interpretar y ejecutar
     operaciones de archivos a través de lenguaje natural.
     """
